@@ -25,13 +25,6 @@ app.get("/", function(req, res) {
 app.get("/documentation", function(req, res) {
   res.sendFile("public/documentation.html", { root: __dirname });
 });
-app.get("/movies", function(req, res) {
-  res.json(Movies);
-});
-
-// app.get movies by title",
-
-
 
 //get all users//
 app.get("/users", function(req,res){
