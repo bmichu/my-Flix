@@ -46,28 +46,34 @@ app.get("/users", function(req,res){
 });
 
 //get user by username
-app.get("/users:Username", function(req, res){
-  Users.findOne({ Username: req.params.Username })
-  .then(function(user){
-    res.json(user)
-  })
-  .catch(function(err){
-    console.error(err);
-    res.status(500).send("Error: " + err);
-  });
-});
+app.get(
+	"/users/:Username",
+	function(req, res) {
+		Users.findOne({ Username: req.params.Username })
+			.then(function(user) {
+				res.json(user);
+			})
+			.catch(function(err) {
+				console.error(err);
+				res.status(500).send("Error: " + err);
+			});
+	}
+);
 
 
 //get all movies
-app.get("/movies", function(req, res) {
-  Movies.find()
-  .then(function(movies){
-    res.status(201).json(movies)
-  })
-  .catch(function(err) {
-    console.error(err);
-    res.status(500).send("Error: " + err);
-  });
+app.get("/movies", function(
+	req,
+	res
+) {
+	Movies.find()
+		.then(function(movies) {
+			res.status(201).json(movies);
+		})
+		.catch(function(err) {
+			console.error(err);
+			res.status(500).send("Error: " + err);
+		});
 });
 
 //get movie by title
@@ -111,6 +117,59 @@ app.get(
     });
   }
 );
+
+// Add a movie to a user's list of favorites
+
+app.post(
+	"/users/:Username/movies/:MovieID",
+	function(req, res) {
+		/*Allows User To Add A New Favorite Movie*/
+		Users.findOneAndUpdate(
+			{ Username: req.params.Username },
+			{
+				$push: { FavoriteMovies: req.params.MovieID }
+			},
+			{ new: true },
+			function(error, updatedUser) {
+				if (error) {
+					console.error(error);
+					res.status(500).send("Error: " + error);
+				} else {
+					res.json(updatedUser);
+				}
+			}
+		);
+	}
+);
+
+//Delete movie from FavoriteMovies list
+app.delete(
+	"/users/:Username/movies/:MovieID",function(req, res) {
+		/*Allows User To Delete A Favorite Movie*/
+		Users.findOneAndUpdate(
+			{ Username: req.params.Username },
+			{
+				$pull: { FavoriteMovies: req.params.MovieID }
+			},
+			{ new: true },
+			function(error, updatedUser) {
+				if (error) {
+					console.error(error);
+					res.status(500).send("Error: " + error);
+				} else {
+					res
+						.status(201)
+						.send(
+							"Movie Under ID # " +
+								req.params.MovieID +
+								" Has Been Deleted From Member's Account."
+						);
+				}
+			}
+		);
+	}
+);
+
 
 //Add data of a new user to the list of users
 app.post("/users", function(req, res) {
