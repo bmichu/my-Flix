@@ -168,7 +168,7 @@ app.delete(
 
 
 //Add data of a new user to the list of users
-app.post("/users", passport.authenticate('jwt', {session: false}),function(req, res) {
+app.post("/users", function(req, res) {
   Users.findOne({ Username: req.body.Username })
     .then(function(user) {
       if (user) {
