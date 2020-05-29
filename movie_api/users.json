@@ -1,0 +1,4 @@
+{"_id":{"$oid":"5e54efcd890a8fdef1e65466"},"Username":"Kate","Password":"Kate1","Email":"kate@yahoo.com","Birthday":{"$date":"1985-02-19T00:00:00Z"},"FavoriteMovies":[{"$oid":"5e54ea82890a8fdef1e65464"}]}
+{"_id":{"$oid":"5e54f071890a8fdef1e65467"},"Username":"John","Password":"John1","Email":"john@yahoo.com","Birthday":{"$date":"1980-03-12T00:00:00Z"}}
+{"_id":{"$oid":"5e54f18b890a8fdef1e65469"},"Username":"Emma","Password":"Emma1","Email":"emma@yahoo.com","Birthday":{"$date":"1982-07-01T00:00:00Z"}}
+{"_id":{"$oid":"5e54f27e890a8fdef1e6546a"},"Username":"Frnak","Password":"Frank1","Email":"frank@yahoo.com","Birthday":{"$date":"1990-06-22T00:00:00Z"}}
