@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 // });
 
 mongoose.connect(
-  "mongodb+srv://myFlixDBadmin:Irysek123@cluster0-953e2.mongodb.net/test?retryWrites=true&w=majority",
+  "mongodb+srv://myFlixDBadmin:Irysek123@cluster0-953e2.mongodb.net/myFlixDB?retryWrites=true&w=majority",
   {
     useNewUrlParser:true,
     // UserUnifiedTopology:true
