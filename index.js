@@ -13,10 +13,18 @@ const Users = Models.User;
 const { check, validationResult } = require("express-validator");
 app.use(bodyParser.json());
 
-mongoose.connect("mongodb://localhost:27017/myFlixDB", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+// mongoose.connect("mongodb://localhost:27017/myFlixDB", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true
+// });
+
+mongoose.connect(
+  "mongodb+srv://myFlixDBadmin:Irysek123@cluster0-953e2.mongodb.net/test?retryWrites=true&w=majority",
+  {
+    userNewUrlParser:true,
+    // UserUnifiedTopology:true
+  }
+);
 
 var auth = require('./auth')(app);
 let allowedOrigins = ['http://localhost:8080', 'http://testsite.com'];
@@ -325,7 +333,7 @@ app.use(function (err, req, res, next) {
   res.status(500).send("Something broke!");
 });
 //mongoose.connect('mongodb://localhost:27017/dbname', { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.connect(mongoose.connect(process.env.CONNECTION_URI), { useNewUrlParser: true, useUnifiedTopology: true });
+//mongoose.connect(mongoose.connect(process.env.CONNECTION_URI), { useNewUrlParser: true, useUnifiedTopology: true });
 // listen for requests
 const port = process.env.PORT || 8080;
 app.listen(port, '0.0.0.0', () => {
