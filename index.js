@@ -18,14 +18,16 @@ app.use(bodyParser.json());
 //   useUnifiedTopology: true
 // });
 
-mongoose.connect(
-  "mongodb+srv://myFlixDBadmin:Irysek123@cluster0-953e2.mongodb.net/myFlixDB?retryWrites=true&w=majority",
-  {
-    useNewUrlParser:true,
-    // UserUnifiedTopology:true
-  }
-);
+//mongoose.connect(
+  //"mongodb+srv://myFlixDBadmin:Irysek123@cluster0-953e2.mongodb.net/myFlixDB?retryWrites=true&w=majority",
+  //{
+    //useNewUrlParser:true,
+  //}
+//);
 
+mongoose.connect(process.env.CONNECTION_URI,
+  { useNewUrlParser: true, useUnifiedTopology: true }
+  );
 var auth = require('./auth')(app);
 let allowedOrigins = ['http://localhost:8080', 'http://testsite.com'];
 
