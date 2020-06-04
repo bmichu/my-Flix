@@ -20,19 +20,19 @@ app.use(bodyParser.json());
 
 //mongoose.connect('mongodb+srv://myFlixDBadmin:Irysek123@myflixdb-p91gd.mongodb.net/myFlixDB?retryWrites=true&w=majority', {
 //useNewUrlParser: true,
-  //useUnifiedTopology: true
+//useUnifiedTopology: true
 //});
 
 
 mongoose.connect(process.env.CONNECTION_URI,
-{ useNewUrlParser: true, useUnifiedTopology: true }
+  { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
 var auth = require('./auth')(app);
-let allowedOrigins = ['http://localhost:8080', 'http://testsite.com'];
+let allowedOrigins = ['http://localhost:8080', 'http://testsite.com', 'http://localhost:1234'];
 
 app.use(cors({
-  origin: function(origin, callback)  {
+  origin: function (origin, callback) {
     if (!origin) return callback(null, true);
     if (allowedOrigins.indexOf(origin) === -1) { // If a specific origin isn’t found on the list of allowed origins
       let message = 'The CORS policy for this application doesn’t allow access from origin ' + origin;
