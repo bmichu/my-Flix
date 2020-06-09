@@ -58,6 +58,13 @@ export class MainView extends React.Component {
       user,
     });
   }
+
+  onSignedIn(register) {
+    this.setState({
+      //console.log(user);
+      register,
+    });
+  }
   render() {
     //   // If the state isn't initialized, this will throw on runtime
     //   // before the data is initially loaded
@@ -66,19 +73,23 @@ export class MainView extends React.Component {
 
     if (!user)
       return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
+    if (register)
+      return (
+        <RegistrationView
+          onClick={() => this.alreadyMember()}
+          onSignedIn={(user) => this.onSignedIn(user)}
+        />
+      );
 
-    // if (!user && !register);
-    // return (
-    //   <RegistrationView
-    //     onClick={() => this.alreadyMember()}
-    //     onSignedIn={(user) => this.onSignedIn(user)}
-    //   />
-    // );
+    // Before the movies have been loaded
+    if (!movies) return <div className="main-view" />;
+
+
 
     return (
       <React.Fragment>
         <Navbar bg="light" expand="lg">
-          <Navbar.Brand>Cinema-App</Navbar.Brand>
+          <Navbar.Brand>MyFlix</Navbar.Brand>
           <Nav.Link href="login-view">Login</Nav.Link>
           <Nav.Link href="registration-view">Register</Nav.Link>
         </Navbar>

@@ -45912,24 +45912,32 @@ function RegistrationView(props) {
   var _useState7 = (0, _react.useState)(""),
       _useState8 = _slicedToArray(_useState7, 2),
       birthday = _useState8[0],
-      createBirthday = _useState8[1];
+      createBirthday = _useState8[1]; // const handleRegister = (e) => {
+  //   e.preventDefault();
+  //   axios
+  //     .post("  https://nameless-mesa-66831.herokuapp.com/users", {
+  //       Username: username,
+  //       Password: password,
+  //       Email: email,
+  //       Birthday: birthday,
+  //     })
+  //     .then((response) => {
+  //       const data = response.data;
+  //       console.log(data);
+  //       window.open("/", "_self"); // the second argument '_self' is necessary so that the page will open in the current tab
+  //     })
+  //     .catch((e) => {
+  //       console.log("error registering the user");
+  //       props.onLoggedIn(username);
+  //     });
+  // };
 
-  var handleRegister = function handleRegister(e) {
+
+  var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
+    console.log(username, password); // Send a request to the server for authentication then call props.onLoggedIn(username)
 
-    _axios.default.post("  https://nameless-mesa-66831.herokuapp.com/users", {
-      Username: username,
-      Password: password,
-      Email: email,
-      Birthday: birthday
-    }).then(function (response) {
-      var data = response.data;
-      console.log(data);
-      window.open("/", "_self"); // the second argument '_self' is necessary so that the page will open in the current tab
-    }).catch(function (e) {
-      console.log("error registering the user");
-      props.onLoggedIn(username);
-    });
+    props.alreadyMember(username);
   };
 
   return _react.default.createElement(_Form.default, {
@@ -49344,6 +49352,14 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "onSignedIn",
+    value: function onSignedIn(register) {
+      this.setState({
+        //console.log(user);
+        register: register
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this3 = this;
@@ -49360,18 +49376,23 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         onLoggedIn: function onLoggedIn(user) {
           return _this3.onLoggedIn(user);
         }
-      }); // if (!user && !register);
-      // return (
-      //   <RegistrationView
-      //     onClick={() => this.alreadyMember()}
-      //     onSignedIn={(user) => this.onSignedIn(user)}
-      //   />
-      // );
+      });
+      if (register) return _react.default.createElement(_registrationView.RegistrationView, {
+        onClick: function onClick() {
+          return _this3.alreadyMember();
+        },
+        onSignedIn: function onSignedIn(user) {
+          return _this3.onSignedIn(user);
+        }
+      }); // Before the movies have been loaded
 
+      if (!movies) return _react.default.createElement("div", {
+        className: "main-view"
+      });
       return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Navbar.default, {
         bg: "light",
         expand: "lg"
-      }, _react.default.createElement(_Navbar.default.Brand, null, "Cinema-App"), _react.default.createElement(_Nav.default.Link, {
+      }, _react.default.createElement(_Navbar.default.Brand, null, "MyFlix"), _react.default.createElement(_Nav.default.Link, {
         href: "login-view"
       }, "Login"), _react.default.createElement(_Nav.default.Link, {
         href: "registration-view"

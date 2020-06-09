@@ -28,8 +28,11 @@ export function RegistrationView(props) {
       .catch((e) => {
         console.log("error registering the user");
         props.onLoggedIn(username);
+
       });
   };
+
+ 
 
   return (
     <Form className="registration-form">
