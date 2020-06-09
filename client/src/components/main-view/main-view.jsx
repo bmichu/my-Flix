@@ -67,13 +67,13 @@ export class MainView extends React.Component {
     if (!user)
       return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
 
-    if (!user && !register);
-    return (
-      <RegistrationView
-        onClick={() => this.alreadyMember()}
-        onSignedIn={(user) => this.onSignedIn(user)}
-      />
-    );
+    // if (!user && !register);
+    // return (
+    //   <RegistrationView
+    //     onClick={() => this.alreadyMember()}
+    //     onSignedIn={(user) => this.onSignedIn(user)}
+    //   />
+    // );
 
     return (
       <React.Fragment>

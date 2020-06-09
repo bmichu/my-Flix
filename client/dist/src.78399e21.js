@@ -49360,16 +49360,14 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         onLoggedIn: function onLoggedIn(user) {
           return _this3.onLoggedIn(user);
         }
-      });
-      if (!user && !register) ;
-      return _react.default.createElement(_registrationView.RegistrationView, {
-        onClick: function onClick() {
-          return _this3.alreadyMember();
-        },
-        onSignedIn: function onSignedIn(user) {
-          return _this3.onSignedIn(user);
-        }
-      });
+      }); // if (!user && !register);
+      // return (
+      //   <RegistrationView
+      //     onClick={() => this.alreadyMember()}
+      //     onSignedIn={(user) => this.onSignedIn(user)}
+      //   />
+      // );
+
       return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Navbar.default, {
         bg: "light",
         expand: "lg"
