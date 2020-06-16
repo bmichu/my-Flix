@@ -10,7 +10,9 @@ export function LoginView(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username, password);
-    // Send a request to the server for authentication then call props.onLoggedIn(username)
+    // TODO: we need to check
+    // By sending a request to the server for authentication then call props.onLoggedIn(username)
+    // In a very similar way as in registration view, got it?
     props.onLoggedIn(username);
   };
 
@@ -41,13 +43,13 @@ export function LoginView(props) {
       >
         Login
       </Button>
-      <Button
+      {/* <Button
         variant="btn-lg btn-secondary btn-block"
         type="submit"
         onClick={handleSubmit}
       >
         New User
-      </Button>
+      </Button> */}
     </Form>
   );
 }
