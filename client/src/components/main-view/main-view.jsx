@@ -7,12 +7,12 @@ import { MovieView } from "../movie-view/movie-view";
 import { MovieCard } from "../movie-card/movie-card";
 // import { Link } from "react-router-dom";
 
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
-import Navbar from "react-bootstrap/Navbar";
-import Button from "react-bootstrap/Button";
-import Nav from "react-bootstrap/Nav";
+// import Row from "react-bootstrap/Row";
+// import Container from "react-bootstrap/Container";
+// import Col from "react-bootstrap/Col";
+// import Button from "react-bootstrap/Button";
+// import Navbar  from "react-bootstrap/Navbar";
+import { Navbar, Row, Container, Button, Form, Nav, Col, FormControl } from "react-bootstrap";
 
 export class MainView extends React.Component {
   constructor() {
@@ -22,7 +22,7 @@ export class MainView extends React.Component {
       movies: null,
       selectedMovie: null,
       user: null,
-      view: 'login', 
+      view: 'login',
     };
   }
 
@@ -73,24 +73,22 @@ export class MainView extends React.Component {
     //   // If the state isn't initialized, this will throw on runtime
     //   // before the data is initially loaded
     const { movies, selectedMovie, user, view } = this.state;
+    const Navbar = <Navbar bg="light">
+      <Button variant="primary" size="sm ml-2 mr-2" onClick={() => this.setViewState('login')}>Login</Button>
+      <Button variant="primary" size="sm" onClick={() => this.setViewState('register')}>Register</Button>
+    </Navbar>;
 
-    if (view === 'login') { 
+    if (view === 'login') {
       return (<>
-        {/* {navbar} */}
-        <Navbar bg="light">
-          <Button variant="primary" size="sm ml-2 mr-2" onClick={() => this.setViewState('login')}>Login</Button>
-          <Button variant="primary" size="sm" onClick={() => this.setViewState('register')}>Register</Button>
-        </Navbar>
+
+        {Navbar}
         <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
       </>);
-    } else if (view === 'register') { 
+    } else if (view === 'register') {
       return (
         <>
-          {/* {navbar} */}
-          <Navbar bg="light">
-            <Button variant="primary" size="sm ml-2 mr-2" onClick={() => this.setViewState('login')}>Login</Button>
-            <Button variant="primary" size="sm" onClick={() => this.setViewState('register')}>Register</Button>
-          </Navbar>
+          {Navbar}
+
           <RegistrationView
             onRegisterSuccess={() => this.setViewState('login')}
           />
@@ -102,22 +100,13 @@ export class MainView extends React.Component {
     // We pass two props to the RegistrationView, corresponding to the 2 cases
     // The alreadyMember and onSignedIn we don't use yet
     // Then view is always login, as we don't change it, we need to change it to another view when user clicks on sth
-
     // Before the movies have been loaded
     if (!movies) return <div className="main-view" />;
-
-    // We don't need the Nav, instead we need to havw 2 buttons, to switch between login and register
-    // Is it clear? But we don't have the function setViewState defined yet, we can do it now :D
-    // Let's try it and see how many errors we get
-    // Navbar should appear in the movies view as well, it;s not so nice because we duplicate the Nav, let's do it better
     return (
       <>
         {}
-        {/* {navbar} */}
-        <Navbar bg="light">
-          <Button variant="primary" size="sm ml-2 mr-2" onClick={() => this.setViewState('login')}>Login</Button>
-          <Button variant="primary" size="sm" onClick={() => this.setViewState('register')}>Register</Button>
-        </Navbar>
+        {Navbar}
+
         {selectedMovie ? (
           <MovieView movie={selectedMovie} />
         ) : (

@@ -49373,22 +49373,24 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           user = _this$state.user,
           view = _this$state.view;
 
+      var Narbar = _react.default.createElement(_Navbar.default, {
+        bg: "light"
+      }, _react.default.createElement(_Button.default, {
+        variant: "primary",
+        size: "sm ml-2 mr-2",
+        onClick: function onClick() {
+          return _this3.setViewState('login');
+        }
+      }, "Login"), _react.default.createElement(_Button.default, {
+        variant: "primary",
+        size: "sm",
+        onClick: function onClick() {
+          return _this3.setViewState('register');
+        }
+      }, "Register"));
+
       if (view === 'login') {
-        return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Navbar.default, {
-          bg: "light"
-        }, _react.default.createElement(_Button.default, {
-          variant: "primary",
-          size: "sm ml-2 mr-2",
-          onClick: function onClick() {
-            return _this3.setViewState('login');
-          }
-        }, "Login"), _react.default.createElement(_Button.default, {
-          variant: "primary",
-          size: "sm",
-          onClick: function onClick() {
-            return _this3.setViewState('register');
-          }
-        }, "Register")), _react.default.createElement(_loginView.LoginView, {
+        return _react.default.createElement(_react.default.Fragment, null, _Navbar.default, _react.default.createElement(_loginView.LoginView, {
           onLoggedIn: function onLoggedIn(user) {
             return _this3.onLoggedIn(user);
           }

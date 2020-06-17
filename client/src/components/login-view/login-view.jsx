@@ -43,13 +43,6 @@ export function LoginView(props) {
       >
         Login
       </Button>
-      {/* <Button
-        variant="btn-lg btn-secondary btn-block"
-        type="submit"
-        onClick={handleSubmit}
-      >
-        New User
-      </Button> */}
     </Form>
   );
 }
