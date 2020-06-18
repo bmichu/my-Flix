@@ -73,7 +73,11 @@ export class MainView extends React.Component {
     //   // If the state isn't initialized, this will throw on runtime
     //   // before the data is initially loaded
     const { movies, selectedMovie, user, view } = this.state;
-    const Navbar = <Navbar bg="light">
+    // const Navbar = <Navbar bg="light">
+    //   <Button variant="primary" size="sm ml-2 mr-2" onClick={() => this.setViewState('login')}>Login</Button>
+    //   <Button variant="primary" size="sm" onClick={() => this.setViewState('register')}>Register</Button>
+    // </Navbar>;
+    const MenuBar = <Navbar bg="light">
       <Button variant="primary" size="sm ml-2 mr-2" onClick={() => this.setViewState('login')}>Login</Button>
       <Button variant="primary" size="sm" onClick={() => this.setViewState('register')}>Register</Button>
     </Navbar>;
@@ -81,13 +85,13 @@ export class MainView extends React.Component {
     if (view === 'login') {
       return (<>
 
-        {Navbar}
+        {MenuBar}
         <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
       </>);
     } else if (view === 'register') {
       return (
         <>
-          {Navbar}
+          {MenuBar}
 
           <RegistrationView
             onRegisterSuccess={() => this.setViewState('login')}
@@ -105,7 +109,7 @@ export class MainView extends React.Component {
     return (
       <>
         {}
-        {Navbar}
+        {MenuBar}
 
         {selectedMovie ? (
           <MovieView movie={selectedMovie} />
