@@ -129,7 +129,7 @@ app.post('/users',
   });
 //get all movies
 app.get("/movies",
-  //passport.authenticate('jwt', { session: false })//
+  passport.authenticate('jwt', { session: false }),
   function (
     req,
     res
