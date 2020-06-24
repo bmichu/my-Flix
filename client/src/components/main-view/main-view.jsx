@@ -50,17 +50,17 @@ export class MainView extends React.Component {
   }
 
 
-  onLoggedIn(user) {
-    // Here we need to switch to movies view as well
-    // Here we also need to check by sending a request to our server and see if user are allowed to login
-    // TODO!!!!!!!!!!!
-    const view = 'movies';
-    this.setState({
-      //console.log(user);
-      user,
-      view,
-    });
-  }
+  // onLoggedIn(user) {
+  //   // Here we need to switch to movies view as well
+  //   // Here we also need to check by sending a request to our server and see if user are allowed to login
+  //   // TODO!!!!!!!!!!!
+  //   const view = 'movies';
+  //   this.setState({
+  //     //console.log(user);
+  //     user,
+  //     view,
+  //   });
+  // }
 
   onLoggedIn(authData) {
     console.log(authData);
